@@ -1,0 +1,24 @@
+<div *ngIf="showSpinner" class="proggress">
+    <mat-spinner></mat-spinner>
+    <h2 class="progressTitle">Please wait...</h2>
+</div>
+
+<app-search *ngIf="!showSpinner" class="mainSearchStyle" [pokemon_list]="pokemon_list" (searchPokemon)="search($event)">
+</app-search>
+<div class="cardContainer">
+    <mat-card class="mainCardView" style="margin: 20px;" *ngFor="let card of cards">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"
+                style="background-image: url({{card.set.images.symbol}});"></div>
+            <mat-card-title>{{card.name}}</mat-card-title>
+            <mat-card-subtitle>#{{card.nationalPokedexNumbers[0]}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="card.images.small" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+            <app-dialog [pokemon_data]="card"></app-dialog>
+            <button mat-button color="primary">Edit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

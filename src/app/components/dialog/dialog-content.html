@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>{{data.name}} #{{data.nationalPokedexNumbers}}</h1>
+<div mat-dialog-content>
+    <h3>Type</h3>
+    <ul>
+        <li>
+            <button mat-button>{{data.types}}</button>
+        </li>
+    </ul>
+    <h3>Weaknesses</h3>
+    <ul *ngFor="let item of data.weaknesses; index as i;">
+        <li>
+            <button mat-button color="primary">{{item.type}}</button>
+        </li>
+    </ul>
+
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

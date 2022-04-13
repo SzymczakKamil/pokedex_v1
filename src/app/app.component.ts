@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
+  hidden_login = false;
+
+  loginApi(event: any) {
+    this.key = event
+    this.hidden_login = true;
+  }
+  @Input()
+  key = 'false';
+
   title = 'pokedex';
+
 }

@@ -1,0 +1,8 @@
+<form class="search-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Search</mat-label>
+        <input (input)="onKeyDown($event.target)" matInput #message maxlength="256" placeholder="Type pokemon name">
+        <mat-hint align="start"><strong>Type minimum 3 characters</strong> </mat-hint>
+    <mat-hint align="end">{{message.value.length}} / 3</mat-hint>
+    </mat-form-field>
+</form>
