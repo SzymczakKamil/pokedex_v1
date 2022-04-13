@@ -28,12 +28,7 @@ export class CardComponent implements OnInit, OnChanges {
 
   }
 
-  openDialog(id: number) {
-    console.log(this.id)
-  }
-
   getAllCards(key: string) {
-    console.log(this.key)
     const response = this.http.get("https://api.pokemontcg.io/v2/cards", {
       headers: {
         "X-Api-Key": key
@@ -45,7 +40,6 @@ export class CardComponent implements OnInit, OnChanges {
         this.pokemon_list = request.data
         this.hidden = true;
         this.showSpinner = false;
-        console.log(this.cards)
       },
       error: (error: any) => {
         this.errorMessage = 'Error message: ' + error.message + "; Error code: " + error.code

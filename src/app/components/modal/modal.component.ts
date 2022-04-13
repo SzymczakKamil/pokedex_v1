@@ -23,11 +23,7 @@ export class ModalComponent implements OnInit {
 
   onClickLogin() {
     this.login.emit(this.key)
-    
-  }
 
-  loginApi(event: any){
-    console.log(event)
   }
 
 }

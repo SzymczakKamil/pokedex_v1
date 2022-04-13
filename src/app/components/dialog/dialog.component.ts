@@ -155,9 +155,7 @@ export class DialogComponent implements OnInit {
   }
 
 
-
   openDialog() {
-    console.log(this.pokemon_data)
     const dialogRef = this.dialog.open(DialogContent, {
       data: this.pokemon_data
     });
@@ -172,6 +170,7 @@ export class DialogComponent implements OnInit {
 @Component({
   selector: 'dialog-content',
   templateUrl: 'dialog-content.html',
+  styleUrls: ['./dialog.component.scss']
 })
 export class DialogContent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: PokemonData) {

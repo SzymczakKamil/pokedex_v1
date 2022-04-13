@@ -1,6 +1,5 @@
 <app-modal *ngIf="!hidden_login" [key]="key" (login)="loginApi($event)"></app-modal>
 <app-toolbar *ngIf="hidden_login"></app-toolbar>
-<!-- <app-search *ngIf="hidden_login" class="mainSearchStyle"></app-search> -->
 <app-card *ngIf="hidden_login" [key]="key"></app-card>
 
 <router-outlet></router-outlet>

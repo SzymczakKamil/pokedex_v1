@@ -13,9 +13,7 @@
             <mat-card-title>{{card.name}}</mat-card-title>
             <mat-card-subtitle>#{{card.nationalPokedexNumbers[0]}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="card.images.small" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-        </mat-card-content>
+        <img mat-card-image [src]="card.images.small" alt="">
         <mat-card-actions>
             <app-dialog [pokemon_data]="card"></app-dialog>
             <button mat-button color="primary">Edit</button>

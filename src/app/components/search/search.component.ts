@@ -27,6 +27,7 @@ export class SearchComponent implements OnInit {
   onKeyDown(target: any) {
     let result = this.pokemon_list.filter(pokemon => pokemon.name.includes(target.value))
     this.searchPokemon.emit(result)
+    //search by api
     // this.cards = result
     // if(target.value.length >3){
     //   const response = this.http.get("https://api.pokemontcg.io/v2/cards/", {
