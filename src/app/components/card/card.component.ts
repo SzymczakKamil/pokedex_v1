@@ -1,10 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../services/http.service';
-import { Observable } from 'rxjs';
-import { getAllCards } from 'pokemon-tcg-sdk-typescript/dist/sdk';
-import { ICard } from 'src/app/models/card';
-import { first } from 'rxjs/operators';
 import { Worker } from '../../services/worker'
 
 
@@ -19,10 +14,8 @@ export class CardComponent implements OnInit, OnChanges {
   errorMessage: string;
   showSpinner: boolean = false;
 
-
   @Input()
   key = ''
-
 
   constructor(private http: HttpService, private worker: Worker) { }
   ngOnChanges(changes: SimpleChanges): void {
@@ -50,6 +43,5 @@ export class CardComponent implements OnInit, OnChanges {
         }
       })
   }
-
-
+  
 }

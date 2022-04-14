@@ -21,17 +21,13 @@ export class AppComponent implements OnInit {
 
   loginApi(event: any) {
     this.key = event
-
     this.worker.getSpinnerBehavior().next(true)
     this.worker.getLoginBehavior().next(true)
-
   }
-
 
   constructor(private worker: Worker) { }
 
   ngOnInit(): void {
-
     this.worker.getSpinnerBehavior()
       .subscribe({
         next: (show: boolean) => {
@@ -47,8 +43,4 @@ export class AppComponent implements OnInit {
       
   }
   
-  getPokemon(pokemon: any) {
-    console.log(pokemon)
-  }
-
 }
