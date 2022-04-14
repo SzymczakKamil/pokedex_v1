@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Worker } from '../app/services/worker'
+import { ICard } from './models/card';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +8,47 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
-  hidden_login = false;
+export class AppComponent implements OnInit {
+  @Input()
+  pokemon = []
 
-  loginApi(event: any) {
-    this.key = event
-    this.hidden_login = true;
-  }
   @Input()
   key = 'false';
 
-  title = 'pokedex';
+  isLoggin: boolean = false;
+  showSpinner: boolean = false;
+  title: string = 'pokedex';
+
+  loginApi(event: any) {
+    this.key = event
+
+    this.worker.getSpinnerBehavior().next(true)
+    this.worker.getLoginBehavior().next(true)
+
+  }
+
+
+  constructor(private worker: Worker) { }
+
+  ngOnInit(): void {
+
+    this.worker.getSpinnerBehavior()
+      .subscribe({
+        next: (show: boolean) => {
+          this.showSpinner = show
+        }
+      });
+    this.worker.getLoginBehavior()
+      .subscribe({
+        next: (login: boolean) => {
+          this.isLoggin = login
+        }
+      });
+      
+  }
+  
+  getPokemon(pokemon: any) {
+    console.log(pokemon)
+  }
 
 }

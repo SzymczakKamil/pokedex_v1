@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
   @Input()
-  key = ''
+  inputValue = ''
 
   @Output()
   login = new EventEmitter()
@@ -17,12 +17,12 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeApiKey(target: any) {
-    this.key = target.value;
+  onInputChange(target: any) {
+    this.inputValue = target.value;
   }
 
   onClickLogin() {
-    this.login.emit(this.key)
+    this.login.emit(this.inputValue)
 
   }
 

@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './components/search/search.component';
 import { ModalComponent } from './components/modal/modal.component';
-
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { ModalComponent } from './components/modal/modal.component';
     DialogComponent,
     DialogContent,
     SearchComponent,
-    ModalComponent
+    ModalComponent,
+    SpinnerComponent
 
   ],
   imports: [

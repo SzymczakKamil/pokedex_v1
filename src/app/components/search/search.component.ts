@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Worker } from '../../services/worker';
+import { filter } from 'rxjs/operators';
+import { ICard } from 'src/app/models/card';
 
 @Component({
   selector: 'app-search',
@@ -8,51 +10,34 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   value = '';
-  @Input()
-  pokemon_list = [{
-    name: ''
-  }];
 
-  @Output()
-  searchPokemon = new EventEmitter()
 
-  errorMessage = '';
-  constructor(private http: HttpClient) { }
+  constructor(private worker: Worker) { }
 
   ngOnInit(): void {
   }
 
   values = '';
 
-  onKeyDown(target: any) {
-    let result = this.pokemon_list.filter(pokemon => pokemon.name.includes(target.value))
-    this.searchPokemon.emit(result)
-    //search by api
-    // this.cards = result
-    // if(target.value.length >3){
-    //   const response = this.http.get("https://api.pokemontcg.io/v2/cards/", {
-    //   headers: {
-    //     "X-Api-Key": "secret"
-    //   },
-    //   params: {
-    //     name: target.value
-    //   }
-    // });
-    // response.subscribe({
-    //   next: (request: any) => {
-    //     console.log(request)
-    //     this.cards = request.data
-    //   },
-    //   error: (error: any) => {
-    //     this.errorMessage = 'Error message: ' + error.message + "; Error code: " + error.code
-    //   }
-    // });
+  changeInput(target: any) {
+    // console.log(this.worker.getCards())
 
-    // }
-  }
-
-  login(event: any) {
-    console.log(event)
+    // const result = this.worker.getCardsBehavior()
+    //   .pipe(
+    //     filter((event: any) => {
+    //       console.log(event)
+    //       let filter = event.filter((pokemon:any) => pokemon.name.includes(target.value))
+    //       console.log(filter)
+    //       return true
+    //     })
+    //   )
+    // result.subscribe(x => console.log(x));
+    // console.log(result)
+    // console.log(this.pokemon_list)
+    this.worker.filterByName(target.value)
+    // let filter = this.worker.getCards().filter((pokemon: any) => pokemon.name.includes(target.value))
+    
+    // this.pokemon = filter
   }
 
 }
