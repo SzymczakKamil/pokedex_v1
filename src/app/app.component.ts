@@ -15,14 +15,22 @@ export class AppComponent implements OnInit {
   @Input()
   key = 'false';
 
+  selected: any;
+  buttonSelectType = "card";
+
   isLoggin: boolean = false;
   showSpinner: boolean = false;
   title: string = 'pokedex';
 
   loginApi(event: any) {
     this.key = event
+  
     this.worker.getSpinnerBehavior().next(true)
     this.worker.getLoginBehavior().next(true)
+  }
+
+  changeSelectionGroup(select: any) {
+    this.buttonSelectType = select
   }
 
   constructor(private worker: Worker) { }
@@ -40,7 +48,7 @@ export class AppComponent implements OnInit {
           this.isLoggin = login
         }
       });
-      
+
   }
-  
+
 }

@@ -15,6 +15,9 @@ export class CardComponent implements OnInit, OnChanges {
   showSpinner: boolean = false;
 
   @Input()
+  selected: any;
+
+  @Input()
   key = ''
 
   constructor(private http: HttpService, private worker: Worker) { }
@@ -25,7 +28,8 @@ export class CardComponent implements OnInit, OnChanges {
         .subscribe({
           next: (response: any) => {
             this.worker.getSpinnerBehavior().next(false);
-            this.worker.getCardsBehavior().next(response.data)
+            this.worker.getCardsBehavior().next(response.data);
+            this.worker.getListsBehavior().next(response.data);
           },
           error: (error: any) => {
             this.errorMessage = 'Error message: ' + error.message + "; Error code: " + error.code
@@ -43,5 +47,5 @@ export class CardComponent implements OnInit, OnChanges {
         }
       })
   }
-  
+
 }

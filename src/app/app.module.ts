@@ -12,6 +12,10 @@ import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './components/search/search.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ListComponent } from './components/list/list.component';
+import { ListDetailsComponent } from './components/list-details/list-details.component';
+import { FormComponent } from './components/form/form.component';
+import { ButtonComponent } from './components/button/button.component';
 
 
 @NgModule({
@@ -23,7 +27,11 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     DialogContent,
     SearchComponent,
     ModalComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ListComponent,
+    ListDetailsComponent,
+    FormComponent,
+    ButtonComponent
 
   ],
   imports: [

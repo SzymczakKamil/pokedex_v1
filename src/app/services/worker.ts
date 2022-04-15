@@ -13,6 +13,8 @@ export class Worker {
     private spinnerBS = new BehaviorSubject<boolean>(false);
     private loginBS = new BehaviorSubject<boolean>(false);
     private cardsBS = new BehaviorSubject<ICard[]>([])
+    private listsBS = new BehaviorSubject<ICard[]>([])
+    private buttonBS = new BehaviorSubject<string>("");
 
 
     constructor() { }
@@ -29,6 +31,14 @@ export class Worker {
         return this.cardsBS;
     }
 
+    getListsBehavior() {
+        return this.listsBS;
+    }
+
+    getButtonBehavior() {
+        return this.buttonBS;
+    }
+
     getCards() {
         return this.cards;
     }
@@ -41,7 +51,13 @@ export class Worker {
         const copyCard = [...this.cards];
         const result = this.cards.filter((pokemon: any) => pokemon.name.includes(name));
         this.cardsBS.next(result)
+        this.listsBS.next(result)
         this.cards = copyCard;
+    }
+
+    clearFilter(){
+        this.cardsBS.next(this.cards)
+        this.listsBS.next(this.cards)
     }
 
 
